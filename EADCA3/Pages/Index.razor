@@ -1,0 +1,138 @@
+﻿@page "/"
+
+@using System.Net.Http
+@using System.Net.Http.Json
+@using System.Threading.Tasks
+@inject HttpClient Http
+
+<PageTitle>Popular Movies</PageTitle>
+
+<style>
+    .tb {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        .tb th, .tb td {
+            padding: 5px;
+            border: solid 1px #777;
+        }
+
+        .tb th {
+            background-color: #6610f2;
+        }
+
+    .pageButton {
+        background-color: #6610f2; /* Green */
+        border: none;
+        color: white;
+        padding: 1px 2px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+    }
+</style>
+
+<h3 style="padding:10px;">Popular Movies</h3>
+
+@if (popularMoviesList is null)
+{
+    <p>Loading....</p>
+}
+else
+{
+    <table class="tb">
+        <tr>
+            <th>Title</th>
+            <th>Release Date</th>
+            <th>Popularity Score</th>
+            <th>Poster</th>
+        </tr>
+        @if (popularMoviesList.results is not null)
+        {
+            @foreach (var movie in popularMoviesList.results)
+            {
+                var posterPath = @imagePrefix + @movie.posterPath;
+
+                <tr>
+                    <td>@movie.title</td>
+                    <td>@movie.releaseDate</td>
+                    <td>@movie.popularity</td>
+                    <td><img src=@posterPath alt="Movie Poster" style="height:100px;"></td>
+                </tr>
+            }
+        }
+    </table>
+    <div class="col-5" style="padding:20px;">
+        <p>Page: <button class="pageButton" @onclick="PreviousPage">Previous</button> @popularMoviesList.page / 500 <button class="pageButton" @onclick="NextPage">Next</button></p>
+        <label>Go to page: </label><input style="width:60px;" @bind-value="@goToPageNumber" />
+        <button class="pageButton" @onclick="GoToPage">Go</button>
+    </div>
+    <p>@pageNumberError</p>
+}
+
+@code {
+    public PopularMoviesList? popularMoviesList;
+    private String apiUrl = "https://api.themoviedb.org/3/movie/popular?api_key=0df0f324d22ca7952f15fbaa8717d341&language=en-US&page=";
+    private String imagePrefix = "https://image.tmdb.org/t/p/original/";
+    private int goToPageNumber = 1;
+    private String pageNumberError = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        popularMoviesList = await Http.GetFromJsonAsync<PopularMoviesList>(apiUrl + "1");
+    }
+
+    private async void NextPage()
+    {
+        if (popularMoviesList is not null)
+        {
+            if (popularMoviesList.page > 0 && popularMoviesList.page < 500)
+            {
+                popularMoviesList = await Http.GetFromJsonAsync<PopularMoviesList>(apiUrl + (popularMoviesList.page + 1));
+                pageNumberError = " ";
+                StateHasChanged();
+            }
+            else
+            {
+                pageNumberError = "Please enter a page number between 1 and 500";
+            }
+        }
+    }
+
+    private async void PreviousPage()
+    {
+        if (popularMoviesList is not null)
+        {
+            if (popularMoviesList.page > 1 && popularMoviesList.page <= 500)
+            {
+                popularMoviesList = await Http.GetFromJsonAsync<PopularMoviesList>(apiUrl + (popularMoviesList.page - 1));
+                pageNumberError = " ";
+                StateHasChanged();
+            }
+            else
+            {
+                pageNumberError = "Please enter a page number between 1 and 500";
+            }
+        }
+    }
+
+    private async void GoToPage()
+    {
+        if (popularMoviesList is not null)
+        {
+            if (goToPageNumber > 0 && goToPageNumber <= 500)
+            {
+                popularMoviesList = await Http.GetFromJsonAsync<PopularMoviesList>(apiUrl + +goToPageNumber);
+                pageNumberError = " ";
+                StateHasChanged();
+            }
+            else
+            {
+                pageNumberError = "Please enter a page number between 1 and 500";
+            }
+        }
+    }
+
+}
