@@ -23,10 +23,11 @@ steps:
 
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'SonarCloud'
+    SonarCloud: 'Sonar'
     organization: 'x00179223'
     scannerMode: 'MSBuild'
     projectKey: 'X00179223_EAD_CA3'
+    projectName: 'EAD_CA3'
 
 - task: VSBuild@1
   inputs:
@@ -41,7 +42,3 @@ steps:
   inputs:
     pollingTimeoutSec: '300'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
