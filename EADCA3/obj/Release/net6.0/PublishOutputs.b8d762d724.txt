@@ -1,0 +1,4 @@
+C:\Users\ray92\source\EAD\EADCA3\obj\Release\net6.0\browser-wasm\PubTmp\Out\selenium-manager\linux\selenium-manager
+C:\Users\ray92\source\EAD\EADCA3\obj\Release\net6.0\browser-wasm\PubTmp\Out\selenium-manager\macos\selenium-manager
+C:\Users\ray92\source\EAD\EADCA3\obj\Release\net6.0\browser-wasm\PubTmp\Out\selenium-manager\windows\selenium-manager.exe
+C:\Users\ray92\source\EAD\EADCA3\obj\Release\net6.0\browser-wasm\PubTmp\Out\web.config

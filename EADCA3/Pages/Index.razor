@@ -32,6 +32,10 @@
         display: inline-block;
         font-size: 10px;
     }
+
+    .flex{
+        display: flex;
+    }
 </style>
 
 <h3 style="padding:10px;">Popular Movies</h3>
@@ -43,7 +47,7 @@
 else
 {
     <table class="tb">
-        <tr>
+        <tr class="text-white">
             <th>Title</th>
             <th>Release Date</th>
             <th>Popularity Score</th>
@@ -64,12 +68,12 @@ else
             }
         }
     </table>
-    <div class="col-5" style="padding:20px;">
-        <p>Page: <button class="pageButton" @onclick="PreviousPage">Previous</button> @popularMoviesList.page / 500 <button class="pageButton" @onclick="NextPage">Next</button></p>
-        <label>Go to page: </label><input style="width:60px;" @bind-value="@goToPageNumber" />
-        <button class="pageButton" @onclick="GoToPage">Go</button>
+    <div class="flex" style="padding:20px;">
+        <p>Page:</p> <button class="pageButton" style="height:25px;" id="prevPageButton" @onclick="PreviousPage">Previous</button><p id="pageIndexText">@popularMoviesList.page / 500 </p><button class="pageButton" id="nextPageButton" style="height:25px;" @onclick="NextPage">Next</button>
+        <label>Go to page: </label><input style="width:60px; height:25px;" id="selectPageInputBox" @bind-value="@goToPageNumber" />
+        <button class="pageButton" id="selectPageButton" style="height:25px;" @onclick="GoToPage">Go</button>
     </div>
-    <p>@pageNumberError</p>
+    <p id="pageNumberError">@pageNumberError</p>
 }
 
 @code {

@@ -165,6 +165,14 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
+      "hash": "sha256-cs8pHUurDt0IqbB8YXPh560au3q3J\/1wRL9jBddRVmE=",
+      "url": "_framework\/Newtonsoft.Json.dll"
+    },
+    {
+      "hash": "sha256-Ur73lDBfC5Clj6t7NmwdqqyvMVYmWEAsKy+bbGWLC84=",
+      "url": "_framework\/WebDriver.dll"
+    },
+    {
       "hash": "sha256-6+E55JXedimdw1c1bDtVg4K7XuWjVWVTifH8QpfzXSY=",
       "url": "_framework\/System.IO.Pipelines.dll"
     },
@@ -861,11 +869,11 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-WNq5khxc23c6K+kXNpiRkmRBNpiR51c6NpcsvbLJFA4=",
+      "hash": "sha256-GjfBquc2XKiObQKH5\/T5qDs074\/4BHd35vKqlk+1fyw=",
       "url": "_framework\/EADCA3.dll"
     },
     {
-      "hash": "sha256-x\/XkO6KT7ojPJEtgBSFtDO0f0MXtowadN0lyvEEjU5U=",
+      "hash": "sha256-pTw3qzerzVFs4Nu1h2wxOrL9aaoTwrdcI+7y8QuBlNQ=",
       "url": "_framework\/EADCA3.pdb"
     },
     {
@@ -873,9 +881,9 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-9yZYPcivyTw+AzqYCYUULRbIv8kN0v9WR\/+Lby1862I=",
+      "hash": "sha256-PSbUakyVWQh2Z3HgrkLT9RrWfE1wNNw9kfRYyAhX2H8=",
       "url": "_framework\/blazor.boot.json"
     }
   ],
-  "version": "H9WBsuDF"
+  "version": "Eaz1dHTx"
 };
